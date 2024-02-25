@@ -54,9 +54,9 @@ def gen_password(length=15) -> str:
 def gen_person() -> list[str]:
     name = ''
     surname = ''
-    with open('/home/Artemka/Windows/Users/OCHKO/Downloads/temp/sberID_files/GenSberID/male_names_rus.txt','r') as namelist:
+    with open('male_names_rus.txt','r') as namelist:
         name = choice(namelist.readlines()).replace('\n', '')
-    with open('/home/Artemka/Windows/Users/OCHKO/Downloads/temp/sberID_files/GenSberID/male_surnames_rus.txt','r') as surnamelist:
+    with open('male_surnames_rus.txt','r') as surnamelist:
         surname = choice(surnamelist.readlines()).replace('\n', '')
     person = [translate(name).capitalize(), translate(surname).capitalize()]
     return person
@@ -81,7 +81,7 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
     birth = birthday[-2::]
     domen = "yandex.ru"
 
-    with open('/home/Artemka/Windows/Users/OCHKO/Downloads/temp/sberID_files/GenSberID/hobbies.txt', 'r') as file:
+    with open('hobbies.txt', 'r') as file:
         hobby = choice(file.readlines())[:-1]
 
     k = randbelow(100)
