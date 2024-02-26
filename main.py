@@ -13,7 +13,6 @@ symbols = '_^*#!@%;:'
 
 
 def main():
-    #
     if len(sys.argv) == 1:
         print('<скрипт> <номер контейнера> [номер]')
     else:
