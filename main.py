@@ -6,7 +6,8 @@ import sys
 
 from translate import translate
 
-alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+small_literas = 'abcdefghijklmnopqrstuvwxyz'
+big_literas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 numbers = '0123456789'
 symbols = '_^*#!@%;:'
 
@@ -40,14 +41,33 @@ def main():
 
 def gen_password(length=15) -> str:
     raw_pass = []
-    for i in range(length):
-        k = randbelow(80)
-        if k < 31:
-            raw_pass.append(choice(alphabet))
-        elif k < 61 and k > 30:
-            raw_pass.append(choice(numbers))
-        else:
-            raw_pass.append(choice(symbols))
+    running = True
+    while running == True:
+        for i in range(length):
+            k = randbelow(80)
+            if k < 21:
+                raw_pass.append(choice(small_literas))
+            elif k < 41 and k > 20:
+                raw_pass.append(choice(numbers))
+            elif k < 61 and k > 40:
+                raw_pass.append(choice(symbols))
+            else:
+                raw_pass.append(choice(big_literas))
+
+        checklist = []
+        for i in raw_pass:
+            if i in small_literas:
+                checklist.append('sl')
+            elif i in big_literas:
+                checklist.append('bl')
+            elif i in numbers:
+                checklist.append('nu')
+            else:
+                checklist.append('sm')
+
+        if len(set(checklist)) == 4:
+            running = False
+
     return ''.join(raw_pass)
 
 
