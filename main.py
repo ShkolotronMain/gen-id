@@ -9,7 +9,7 @@ from translate import translate
 small_literas = 'abcdefghijklmnopqrstuvwxyz'
 big_literas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 numbers = '0123456789'
-symbols = '_^*#!@%;:'
+symbols = '_^*#!@%;:-'
 
 
 def main():
