@@ -34,7 +34,6 @@ def main():
         print(birth)
 
         print(gen_email(man, birth, container))
-
         print(gen_address())
 
 
