@@ -77,7 +77,7 @@ def gen_person() -> list[str]:
         name = choice(namelist.readlines()).replace('\n', '')
     with open('male_surnames_rus.txt','r') as surnamelist:
         surname = choice(surnamelist.readlines()).replace('\n', '')
-    person = [translate(name).capitalize(), translate(surname).capitalize()]
+    person = [name, surname]
     return person
 
 def gen_date() -> str:
@@ -95,8 +95,8 @@ def gen_address() -> str:
     return base+str(home)
 
 def gen_email(person: list[str], birthday: str, container: str) -> str:
-    name = person[0]
-    surname = person[1]
+    name = translate(person[0])
+    surname = translate(person[1])
     birth = birthday[-2::]
     domen = "yandex.ru"
 
