@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 def translate(inp: str) -> str:
     inp = inp.lower()
     word = list(inp)
