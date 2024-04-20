@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 #!/usr/bin/env python
 
 from secrets import choice, randbelow
@@ -100,6 +99,9 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
     birth = birthday[-2::]
     domen = "yandex.ru"
 
+    rs = randbelow(52)
+    ransym = small_literas[rs] if (rs <= 25) else big_literas[rs-26] 
+
     with open('hobbies.txt', 'r') as file:
         hobby = choice(file.readlines())[:-1]
 
@@ -112,7 +114,7 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
         case 2:
             return f'{name}-{surname}-{hobby}@{domen}'
         case 3:
-            return f'{birth}-{name}-{hobby}@{domen}'
+            return f'{ransym}{birth}-{name}-{hobby}@{domen}'
         case 4:
             return f'{hobby}-{surname}-{birth}@{domen}'
         case 5:
