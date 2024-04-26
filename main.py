@@ -94,6 +94,7 @@ def gen_address() -> str:
     return base+str(home)
 
 def gen_email(person: list[str], birthday: str, container: str) -> str:
+    separators = ('', '-', '_')
     name = translate(person[0])
     surname = translate(person[1])
     birth = birthday[-2::]
@@ -105,28 +106,31 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
     with open('hobbies.txt', 'r') as file:
         hobby = choice(file.readlines())[:-1]
 
+    sep = randbelow(len(separators))
+    sep = separators[sep]
+        
     k = randbelow(100)
     match (k % 10):
         case 0:
-            return f'{surname}-{name}-{hobby}@{domen}'
+            return f'{surname}{sep}{name}{sep}{hobby}@{domen}'
         case 1:
-            return f'{surname}-{name}-{birth}@{domen}'
+            return f'{surname}{sep}{name}{sep}{birth}@{domen}'
         case 2:
-            return f'{name}-{surname}-{hobby}@{domen}'
+            return f'{name}{sep}{surname}{sep}{hobby}@{domen}'
         case 3:
-            return f'{ransym}{birth}-{name}-{hobby}@{domen}'
+            return f'{ransym}{birth}{sep}{name}{sep}{hobby}@{domen}'
         case 4:
-            return f'{hobby}-{surname}-{birth}@{domen}'
+            return f'{hobby}{sep}{surname}{sep}{birth}@{domen}'
         case 5:
-            return f'{surname}-{hobby}-{birth}@{domen}'
+            return f'{surname}{sep}{hobby}{sep}{birth}@{domen}'
         case 6:
-            return f'{container}-{name}-{hobby}@{domen}'
+            return f'{container}{sep}{name}{sep}{hobby}@{domen}'
         case 7:
-            return f'{surname}-{container}-{birth}@{domen}'
+            return f'{surname}{sep}{container}{sep}{birth}@{domen}'
         case 8:
-            return f'{container}-{hobby}-{birth}@{domen}'
+            return f'{container}{sep}{hobby}{sep}{birth}@{domen}'
         case 9:
-            return f'{name}-{surname}-{container}@{domen}'
+            return f'{name}{sep}{surname}{sep}{container}@{domen}'
 
 if __name__ == '__main__':
     main()
