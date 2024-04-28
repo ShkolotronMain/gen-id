@@ -68,7 +68,6 @@ def gen_password(length=15) -> str:
 
     return ''.join(raw_pass)
 
-
 def gen_person() -> list[str]:
     name = ''
     surname = ''
@@ -131,6 +130,6 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
             return f'{container}{sep}{hobby}{sep}{birth}@{domen}'
         case 9:
             return f'{name}{sep}{surname}{sep}{container}@{domen}'
-
+        
 if __name__ == '__main__':
     main()
