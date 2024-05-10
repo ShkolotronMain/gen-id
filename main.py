@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/python
 
 from secrets import choice, randbelow
 import time
@@ -93,7 +93,7 @@ def gen_address() -> str:
     return base+str(home)
 
 def gen_email(person: list[str], birthday: str, container: str) -> str:
-    separators = ('', '-', '_')
+    separators = ('', '-')
     name = translate(person[0])
     surname = translate(person[1])
     birth = birthday[-2::]
