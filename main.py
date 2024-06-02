@@ -1,4 +1,4 @@
-#!/bin/python
+#! /bin/env/python
 
 from secrets import choice, randbelow
 import time
@@ -45,9 +45,9 @@ def gen_password(length=15) -> str:
             k = randbelow(80)
             if k < 21:
                 raw_pass.append(choice(small_literas))
-            elif k < 41 and k > 20:
+            elif 41 > k > 20:
                 raw_pass.append(choice(numbers))
-            elif k < 61 and k > 40:
+            elif 61 > k > 40:
                 raw_pass.append(choice(symbols))
             else:
                 raw_pass.append(choice(big_literas))
@@ -68,6 +68,7 @@ def gen_password(length=15) -> str:
 
     return ''.join(raw_pass)
 
+
 def gen_person() -> list[str]:
     name = ''
     surname = ''
@@ -78,6 +79,7 @@ def gen_person() -> list[str]:
     person = [name, surname]
     return person
 
+
 def gen_date() -> str:
     now = int(time.time())
     deltaday = randbelow(31)
@@ -87,10 +89,12 @@ def gen_date() -> str:
     now_str=time.strptime(time.ctime(float(now)))
     return time.strftime('%d.%m.%Y',now_str)
 
+
 def gen_address() -> str:
     base = 'Университетский проспект, 100А\n'
     home = randbelow(16*16)+15
     return base+str(home)
+
 
 def gen_email(person: list[str], birthday: str, container: str) -> str:
     separators = ('', '-')
@@ -108,7 +112,7 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
     sep = randbelow(len(separators))
     sep = separators[sep]
         
-    k = randbelow(100)
+    k = randbelow(120)
     match (k % 10):
         case 0:
             return f'{surname}{sep}{name}{sep}{hobby}@{domen}'
@@ -130,6 +134,11 @@ def gen_email(person: list[str], birthday: str, container: str) -> str:
             return f'{container}{sep}{hobby}{sep}{birth}@{domen}'
         case 9:
             return f'{name}{sep}{surname}{sep}{container}@{domen}'
-        
+        case 10:
+            return f'{name[0]}.{surname}{birth}@{domen}'
+        case 11:
+            return f'{name[0]}{surname}{sep}{birth}@{domen}'
+
+
 if __name__ == '__main__':
     main()
